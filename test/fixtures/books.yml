@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  author: MyString
-  cover: MyString
+  title: Hunger Games
+  author: Suzanne Collins
+  cover: cover.jpg
 
 two:
-  title: MyString
-  author: MyString
-  cover: MyString
+  title: Catching Fire
+  author: Suzanne Collins
+  cover: cover2.png
