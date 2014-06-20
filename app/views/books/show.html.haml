@@ -1,2 +1,10 @@
-%h1 Book#show
-%p Find me in app/views/book/show.html.haml
+%h2
+  = @book.title
+%p
+  %strong Author:
+  = @book.author
+%p
+  = @book.cover
+
+= link_to 'Edit', edit_book_path
+= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' }
