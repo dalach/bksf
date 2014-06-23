@@ -1,2 +1,5 @@
-%h1 Bookshelves#index
-%p Find me in app/views/bookshelves/index.html.haml
+%h2 Bookshelf
+%ul
+  - Bookshelf.all.each do |bookshelf|
+    %li= link_to bookshelf.name, bookshelf
+%p= link_to 'New Bookshelf', new_bookshelf_path
