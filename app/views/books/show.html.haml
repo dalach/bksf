@@ -4,7 +4,7 @@
   %strong Author:
   = @book.author
 %p
-  = @book.cover
+  = image_tag(@book.cover_url, :width => 300) if @book.cover.present?
 
 = link_to 'Edit', edit_book_path
 = link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' }
