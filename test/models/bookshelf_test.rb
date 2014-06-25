@@ -6,8 +6,12 @@ class BookshelfTest < ActiveSupport::TestCase
     assert bookshelves(:one).valid?
   end
 
-  test "shoukd have name" do
+  test "should have name" do
     bookshelves(:one).name = nil
     assert_not bookshelves(:one).valid?
+  end
+
+  test "should create permalink" do
+    assert_equal("1-my-favourite-books", bookshelves(:one).permalink)
   end
 end

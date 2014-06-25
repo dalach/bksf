@@ -9,7 +9,7 @@ class Bookshelf < ActiveRecord::Base
   end
 
   def permalink
-    "#{user.id}-#{name.parameterize}"
+    "#{user_id}-#{name.parameterize}"
   end
 
 end
