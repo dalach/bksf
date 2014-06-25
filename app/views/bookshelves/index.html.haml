@@ -1,5 +1,14 @@
 %h2 Bookshelf
-%ul
-  - Bookshelf.all.each do |bookshelf|
-    %li= link_to bookshelf.name, bookshelf
-%p= link_to 'New Bookshelf', new_bookshelf_path
+- if user_signed_in?
+  - if current_user.bookshelf
+    %p
+      = link_to current_user.bookshelf.name, current_user.bookshelf
+      %br/
+      = link_to 'Destroy', current_user.bookshelf, method: :delete, data: { confirm: 'Are you sure?' }
+  - else
+    %p
+      = link_to 'New Bookshelf', new_bookshelf_path
+- else
+  = link_to "Login", new_user_session_path
+  %span OR
+  = link_to "Sign up", new_user_registration_path

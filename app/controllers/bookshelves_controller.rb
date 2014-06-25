@@ -17,6 +17,8 @@ class BookshelvesController < ApplicationController
 
   def create
     @bookshelf = Bookshelf.new(bookshelf_params)
+    @bookshelf.user_id = current_user.id
+
     if @bookshelf.save
       flash[:notice] = 'Bookshelf successfully created'
       redirect_to @bookshelf
@@ -26,7 +28,6 @@ class BookshelvesController < ApplicationController
     end
   end
 
-  
   def update
     if @bookshelf.update(bookshelf_params)
       flash[:notice] = 'bookshelf was successfully updated.'
