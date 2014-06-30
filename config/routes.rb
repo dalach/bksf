@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :bookshelves
   resources :books
-  # resources :books do
-  #   post :add_to_bookshelf, :to => :show
-  # end
+  resources :books do
+    get :add_to_bookshelf, :to => :show
+  end
 
 end

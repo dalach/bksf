@@ -47,10 +47,10 @@ class BooksController < ApplicationController
   def add_to_bookshelf
     if BookOnBookshelf.create(book_id: @book.id, bookshelf_id: current_user.bookshelf.id)
       flash[:notice] = 'Book added.'
-      redirect_to books_path
+      redirect_to :back
     else
       flash[:error] = 'Book NOT added'
-      redirect_to books_path
+      redirect_to :back
     end
   end
 
