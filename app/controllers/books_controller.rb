@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :add_to_bookshelf]
 
   def index
     @books = Book.all
@@ -41,6 +41,16 @@ class BooksController < ApplicationController
       redirect_to books_path
     else
       redirect_to books_path, error: 'Book was NOT destroyed.'
+    end
+  end
+
+  def add_to_bookshelf
+    if BookOnBookshelf.create(book_id: @book.id, bookshelf_id: current_user.bookshelf.id)
+      flash[:notice] = 'Book added.'
+      redirect_to books_path
+    else
+      flash[:error] = 'Book NOT added'
+      redirect_to books_path
     end
   end
 
