@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  
+
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -45,7 +45,8 @@ class BooksController < ApplicationController
   end
 
   def add_to_bookshelf
-    if BookOnBookshelf.create(book_id: @book_id, bookshelf_id: current_user.bookshelf.id)
+    @book = Book.find(params[:book_id])
+    if BookOnBookshelf.create(book_id: @book.id, bookshelf_id: current_user.bookshelf.id)
       flash[:notice] = 'Book added.'
       redirect_to :back
     else
