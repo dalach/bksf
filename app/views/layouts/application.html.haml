@@ -24,7 +24,7 @@
         / Right Nav Section
         %ul.right
           %li.active
-            %a{href: "#foot"} About
+            = link_to 'About', :about
           %li.has-dropdown
             - if user_signed_in?
               %a{href: "#"}   
@@ -34,15 +34,16 @@
                 %li
                   = link_to 'Edit profile', edit_user_registration_path
                 %li
-                  = link_to "Logout", destroy_user_session_path
+                  = link_to "Logout", destroy_user_session_path, method: :delete
 
             - else
               %a{href: "#"}   
                 You new?
               %ul.dropdown
                 %li
-                  %a{href: "#"} First link in dropdown
+                  = link_to 'Sign up!', new_user_registration_path
                 %li
+                  = link_to "Sign in", new_user_session_path
 
         / Left Nav Section
         %ul.left
@@ -52,7 +53,7 @@
             = link_to 'Back', :back
 
     .row
-      .large-8.columns    
+      .large-12.columns    
         - if notice
           %p.alert.alert-success= notice
         - if alert
