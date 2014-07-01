@@ -16,6 +16,5 @@
 /tmp
 
 # Ignore uploads
-app/uploaders/
 public/uploads/
 
