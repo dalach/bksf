@@ -1,6 +1,11 @@
 %h1 Books
-%ul
-  - @books.each do |book|
-    %li= link_to book.title, book_path(book.id)
+
+- @books.in_groups_of(4) do |group|
+  .row
+    - group.compact.each do |book|
+      .large-3.columns
+        = image_tag book.cover_url, :width => '100%' if book.cover.present?
+        %h4
+          = link_to book.title, book
 
 = link_to 'New Book', new_book_path
