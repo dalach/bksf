@@ -1,10 +1,8 @@
 %h1= @bookshelf.name
-.row
-  - BookOnBookshelf.user_books.each do |book|
-    .row
+-current_user.bookshelf.books.uniq.in_groups_of(3) do |group|
+  .row
+    - group.compact.each do |book|
       .large-4.columns
+        %h4
+          = link_to book.title, book
         = image_tag book.cover_url, :width => '100%' if book.cover.present?
-      .large-8.columns
-        %h2= book.title
-        %br/
-        %span= book.author
