@@ -6,7 +6,8 @@
 %p
   = image_tag(@book.cover_url, :width => 300) if @book.cover.present?
 
-= button_to 'Add to you bookshelf', {:controller => "books", :action => "add_to_bookshelf"}, {method: :get }
+/ = button_to 'Add to you bookshelf', {:controller => "books", :action => "add_to_bookshelf"}, {method: :post }
+= button_to 'Add', add_to_bookshelf_book_path(@book)
 
 = link_to 'Edit', edit_book_path
 = link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' }

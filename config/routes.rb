@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :bookshelves
   resources :books
   resources :books do
-    get :add_to_bookshelf, :to => :show
+    post :add_to_bookshelf
   end
 end
