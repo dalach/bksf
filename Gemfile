@@ -17,7 +17,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'devise'
 gem 'capybara', '~> 2.2.1'
-
+gem 'foundation-rails'
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 # gem 'debugger', group: [:development, :test]
