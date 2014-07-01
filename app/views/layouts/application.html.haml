@@ -11,21 +11,56 @@
     = csrf_meta_tags
   %body
 
-  
-    - if user_signed_in?
-      Logged in as 
-      %strong= current_user.email
-      = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' |
-      = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
-    - else
-      = link_to "Sign up", new_user_registration_path, :class => 'navbar-link' |
-      = link_to "Login", new_user_session_path, :class => 'navbar-link'
+    %nav.top-bar{"data-topbar" => ""}
+      %ul.title-area
+        %li.name
+          %h1
+            = link_to "Bookshelf", bookshelves_path
+        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+        %li.toggle-topbar.menu-icon
+          %a{href: "#"}
+            %span Menu
+      %section.top-bar-section
+        / Right Nav Section
+        %ul.right
+          %li.active
+            %a{href: "#foot"} About
+          %li.has-dropdown
+            - if user_signed_in?
+              %a{href: "#"}   
+                Logged in as 
+                %strong= current_user.email
+              %ul.dropdown
+                %li
+                  = link_to 'Edit profile', edit_user_registration_path
+                %li
+                  = link_to "Logout", destroy_user_session_path
 
-    - if notice
-      %p.alert.alert-success= notice
-    - if alert
-      %p.alert.alert-danger= alert
+            - else
+              %a{href: "#"}   
+                You new?
+              %ul.dropdown
+                %li
+                  %a{href: "#"} First link in dropdown
+                %li
 
-    = yield
+        / Left Nav Section
+        %ul.left
+          %li
+            = link_to 'Books', books_path
+          %li
+            = link_to 'Back', :back
+
+    .row
+      .large-8.columns    
+        - if notice
+          %p.alert.alert-success= notice
+        - if alert
+          %p.alert.alert-danger= alert
+    .row
+      %h1
+        = link_to 'Bookshelf App', bookshelves_path
+    .row
+      = yield
 
     = javascript_include_tag "application"
