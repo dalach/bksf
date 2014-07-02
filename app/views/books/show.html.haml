@@ -14,8 +14,9 @@
 
     %ul.button-group
       %li
-        = button_to 'Add', book_add_to_bookshelf_path(@book), :class => 'button'    
-      %li
-        = link_to 'Edit', edit_book_path, :class => 'button'
-      %li
-        = link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button'
+        = button_to 'Add', book_add_to_bookshelf_path(@book), :class => 'button'
+      - if current_user.admin?
+        %li
+          = link_to 'Edit', edit_book_path, :class => 'button'
+        %li
+          = link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button'

@@ -8,4 +8,5 @@
         %h4
           = link_to book.title, book
 
-= link_to 'New Book', new_book_path
+- if current_user.admin?
+  = button_to 'New Book', new_book_path, :class => 'button'
