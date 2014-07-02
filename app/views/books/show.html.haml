@@ -13,8 +13,12 @@
       = @book.author
 
     %ul.button-group
-      %li
-        = button_to 'Add', book_add_to_bookshelf_path(@book), :class => 'button'
+      - if current_user.bookshelf.books.include?(@book)
+        %li
+          = button_to 'Remove from Bookshelf', book_remove_from_bookshelf_path(@book), :class => 'button'
+      - else
+        %li
+          = button_to 'Add', book_add_to_bookshelf_path(@book), :class => 'button'
       - if current_user.admin?
         %li
           = link_to 'Edit', edit_book_path, :class => 'button'

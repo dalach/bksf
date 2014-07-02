@@ -55,6 +55,21 @@ class BooksController < ApplicationController
     end
   end
 
+  def remove_from_bookshelf
+    @book = Book.find(params[:book_id])
+    @book.book_on_bookshelf_ids.each do |index|
+      if BookOnBookshelf.all[index].bookshelf_id == current_user.bookshelf.id
+        BookOnBookshelf.all[index].destroy!
+        flash[:notice] = 'Book removed.'
+        redirect_to root_path
+
+      else
+        flash[:error] = 'Book NOT removed'
+        redirect_to :back
+      end
+    end
+  end
+
   private
     def set_book
       @book = Book.find(params[:id])

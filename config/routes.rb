@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :books
   resources :books do
     post :add_to_bookshelf
+    post :remove_from_bookshelf
   end
 end
