@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!
+  before_filter :verify_is_admin, only: [:new, :edit, :update, :destroy]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -63,4 +63,10 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :author, :cover)
     end
+
+  private
+    def verify_is_admin
+      (current_user.nil?) ? redirect_to(books_path) : (redirect_to(books_path) unless current_user.admin?)
+    end
+
 end
