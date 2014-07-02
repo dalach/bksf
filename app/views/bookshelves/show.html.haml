@@ -1,4 +1,4 @@
-%h1= @bookshelf.name
+%h1= current_user.bookshelf.name
 -current_user.bookshelf.books.uniq.reverse.in_groups_of(3) do |group|
   .row
     - group.compact.each do |book|
