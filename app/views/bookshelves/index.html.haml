@@ -3,8 +3,6 @@
   - if current_user.bookshelf
     %p
       = link_to current_user.bookshelf.name, current_user.bookshelf
-      %br/
-      = link_to 'Destroy', current_user.bookshelf, method: :delete, data: { confirm: 'Are you sure?' }
   - else
     %p
       = link_to 'New Bookshelf', new_bookshelf_path
