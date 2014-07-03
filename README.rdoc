@@ -1,28 +1,18 @@
-== README
+=Bookshelf app
+User can add books to their bookshelf. Admin can create and destroy books.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+=Create admin
+* rails c
+* select User, for example: User.first.update_attribute(:admin, true)
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+==Back-end
+* `Rails 4.1.1`
+* `Ruby 2.1.1`
+
+==Front-end
+* Foundation 5
+
+==Tests
+* There are tests for an authentication written with capybara.
+* Models are tested with MiniTest.
